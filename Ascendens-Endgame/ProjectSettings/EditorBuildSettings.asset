@@ -5,7 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/scenes/Jugar.unity
+    guid: 490bf6da3bab3f24d98fb7fd440d6880
+  - enabled: 1
+    path: Assets/scenes/Partidas_Guardadas.unity
+    guid: 741156c6eb52e2447825007518f0320f
+  - enabled: 1
+    path: "Assets/scenes/Inicia_Sesi\xF3n.unity"
+    guid: 0250672022ecb7a4a8528b2813aa6702
+  - enabled: 1
+    path: Assets/scenes/Tu_Partida.unity
+    guid: 0ced09c0ef8bb304aa75b243215092a2
   m_configObjects: {}
