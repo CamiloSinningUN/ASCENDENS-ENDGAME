@@ -6,7 +6,10 @@ public class Enemy : MonoBehaviour
 {
     public float velocidad;
     public float propulcion;
-    public int vida;
+    public int vida=100;
+    public float AttackRange = 0.5f;
+    public LayerMask PersonLayer;
+    public int daño;
 
     public bool aux;
     // Start is called before the first frame update
@@ -26,17 +29,7 @@ public class Enemy : MonoBehaviour
         {
             mover();
         }
-        if (vida <= 0)
-        {
-            GameObject.Find("Enemigo").GetComponent<Animator>().SetBool("live", false);
-            velocidad = 0;
-            gameObject.tag = "piso";
-            gameObject.GetComponent<BoxCollider>().center = new Vector3(1, -0.5f, 0);
-            gameObject.GetComponent<BoxCollider>().size = new Vector3(1, 0, 0);
-            GameObject.Find("izquierdo").GetComponent<BoxCollider>().enabled = false;
-            GameObject.Find("derecho").GetComponent<BoxCollider>().enabled = false;
-
-        }
+        Ataque_Cuerpo();
     }
     private void OnTriggerExit(Collider other)
     {
@@ -52,11 +45,7 @@ public class Enemy : MonoBehaviour
             GameObject.Find("Enemigo").GetComponent<Animator>().SetTrigger("hit");
             vida--;
         }
-        if (other.gameObject.tag == "espada")
-        {
-            GameObject.Find("Enemigo").GetComponent<Animator>().SetTrigger("hit");
-            vida -= 2;
-        }
+        
         if (other.gameObject.tag == "esquina")
         {
             aux = false;
@@ -82,6 +71,42 @@ public class Enemy : MonoBehaviour
     {
         GameObject.Find("Enemigo").GetComponent<Animator>().SetBool("moving", true);
         gameObject.GetComponent<Rigidbody>().velocity = new Vector3(velocidad, gameObject.GetComponent<Rigidbody>().velocity.y + propulcion, 0);
+    }
+    public void recibirdaño(int daño)
+    {
+        vida = vida-daño;
+        GameObject.Find("Enemigo").GetComponent<Animator>().SetTrigger("hit");
+        if (vida <= 0)
+        {
+            morir();
+           
+        }
+    }
+    public void morir()
+    {
+        GameObject.Find("Enemigo").GetComponent<Animator>().SetBool("live", false);
+        velocidad = 0;
+        gameObject.tag = "piso";
+        gameObject.GetComponent<BoxCollider>().center = new Vector3(1, -0.5f, 0);
+        gameObject.GetComponent<BoxCollider>().size = new Vector3(1, 0, 0);
+    }
+    public void Ataque_Cuerpo()
+    {                 
+            Collider[] hitpersons = Physics.OverlapSphere(GameObject.Find("AttackPointE").transform.position, AttackRange, PersonLayer);
+            foreach (Collider person in hitpersons)
+            {
+            Debug.Log(person.name);
+            if (person != null)
+            {
+                GameObject.Find("Enemigo").GetComponent<Animator>().SetTrigger("atack");
+                person.GetComponent<Avatar>().recibir_daño(daño,gameObject.transform);
+            }
+            
+            }      
+    }
+    public void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(GameObject.Find("AttackPointE").GetComponent<Transform>().position, AttackRange);
     }
 
 }
