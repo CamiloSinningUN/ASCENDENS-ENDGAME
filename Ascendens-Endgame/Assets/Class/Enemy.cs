@@ -2,22 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+///<summary>
+///Clase enemigos.
+///</summary>
+///<remarks>
+///Da atributos y funciones a los enemigos.
+///</remarks>
+
+
 public class Enemy : MonoBehaviour
 {
     public float velocidad;
     public float propulcion;
+
     public int vida=100;
     public float AttackRange = 0.5f;
     public LayerMask PersonLayer;
     public int daño;
 
+
     public bool aux;
+
+
     // Start is called before the first frame update
     void Start()
     {
         gameObject.GetComponent<Rigidbody>().velocity=new Vector3(5,5,0);        
         aux = false;
     }
+
+
     // Update is called once per frame
     void Update()
     {
@@ -31,6 +46,8 @@ public class Enemy : MonoBehaviour
         }
         Ataque_Cuerpo();
     }
+
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "esquina")
@@ -38,6 +55,8 @@ public class Enemy : MonoBehaviour
             aux = true;
         }
     }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "bala")
@@ -52,7 +71,7 @@ public class Enemy : MonoBehaviour
             propulcion = float.Parse(other.gameObject.name);
             GameObject.Find("Enemigo").GetComponent<Animator>().SetTrigger("jumping");
         }
-        //que paresca que le pega cuando se acerca
+        //que parezca que le pega cuando se acerca
         if (other.gameObject.tag == "Player")
         {
             GameObject.Find("Enemigo").GetComponent<Animator>().SetTrigger("atack");
@@ -63,10 +82,14 @@ public class Enemy : MonoBehaviour
             GameObject.Find("Enemigo").GetComponent<SpriteRenderer>().flipX=true;
         }
     }
+
+
     public void salto()
     {
         gameObject.GetComponent<Rigidbody>().velocity = new Vector3(velocidad, gameObject.GetComponent<Rigidbody>().velocity.y, 0);
     }
+
+
     public void mover()
     {
         GameObject.Find("Enemigo").GetComponent<Animator>().SetBool("moving", true);
