@@ -7,6 +7,8 @@ TagManager:
   - piso
   - espada
   - bala
+  - Moneda
+  - Enemy
   layers:
   - Default
   - TransparentFX

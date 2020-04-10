@@ -117,8 +117,7 @@ public class Enemy : MonoBehaviour
     {                 
             Collider[] hitpersons = Physics.OverlapSphere(GameObject.Find("AttackPointE").transform.position, AttackRange, PersonLayer);
             foreach (Collider person in hitpersons)
-            {
-            Debug.Log(person.name);
+            {           
             if (person != null)
             {
                 GameObject.Find("Enemigo").GetComponent<Animator>().SetTrigger("atack");
