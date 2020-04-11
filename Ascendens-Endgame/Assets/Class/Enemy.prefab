@@ -68,6 +68,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   "da\xF1o": 0
+  AttackPoint: {fileID: 4550293869655607076}
+  Sprite: {fileID: 1900350279659521295}
   aux: 0
 --- !u!54 &6240841763982410879
 Rigidbody:

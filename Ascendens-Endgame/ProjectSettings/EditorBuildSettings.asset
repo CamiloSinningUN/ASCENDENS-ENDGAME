@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/Tu_Partida.unity
     guid: 0ced09c0ef8bb304aa75b243215092a2
+  - enabled: 1
+    path: Assets/scenes/Historia/Historia.unity
+    guid: 3083ecce649155148aac03c98cefde24
+  - enabled: 1
+    path: Assets/scenes/Nivel1.0.unity
+    guid: 410afbc43704a4643abde57e74d1c6d0
   m_configObjects: {}

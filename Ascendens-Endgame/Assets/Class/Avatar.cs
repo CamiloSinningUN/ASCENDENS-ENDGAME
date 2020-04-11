@@ -11,9 +11,16 @@ public class Avatar : MonoBehaviour
     public float AttackRange = 0.5f;
     public float AttackRangeDistance = 2f;
     public int daño=1;
+    public int vida;
+
     public LayerMask enemyMask;
     public bool aux=true;
     public GameObject bala;
+    public GameObject AttackPointL;
+    public GameObject AttackPointR;
+    public GameObject Gun;
+    public GameObject Sprite;
+
     
 
     
@@ -42,8 +49,8 @@ public class Avatar : MonoBehaviour
         {
             ataque_cuerpo();
         }
-            
 
+        morir();
         Dispara();
         
     }
@@ -72,20 +79,29 @@ public class Avatar : MonoBehaviour
     public void ataque_cuerpo()
     {
         if (Input.GetKeyDown(KeyCode.F))
-        {
-            
-            GameObject.Find("Person").GetComponent<Animator>().SetTrigger("atacking");
-            Collider[] hitEnemies =  Physics.OverlapSphere(GameObject.Find("AttackPoint").transform.position,AttackRange,enemyMask);
-            foreach (Collider enemy in hitEnemies)
+        {            
+            Sprite.GetComponent<Animator>().SetTrigger("atacking");           
+            Collider[] hitEnemiesL = Physics.OverlapSphere(AttackPointL.transform.position,AttackRange,enemyMask);
+            Collider[] hitEnemiesR = Physics.OverlapSphere(AttackPointR.transform.position, AttackRange, enemyMask);
+            foreach (Collider enemy in hitEnemiesL)
             {
-                
+                if (Sprite.GetComponent<SpriteRenderer>().flipX == false)
+                {
                     enemy.GetComponent<Enemy>().recibirdaño(daño);
-                           
+                }                                             
+            }
+            foreach (Collider enemy in hitEnemiesR)
+            {
+                if (Sprite.GetComponent<SpriteRenderer>().flipX == true)
+                {
+                    enemy.GetComponent<Enemy>().recibirdaño(daño);
+                }
             }
         }
     }
     public void recibir_daño(int daño,Transform posicion_daño)
     {
+        vida = vida - daño;
         if (posicion_daño.position.x > gameObject.transform.position.x)
         {
             gameObject.GetComponent<Rigidbody>().velocity = new Vector3(-6, 4, 0);
@@ -102,8 +118,9 @@ public class Avatar : MonoBehaviour
     }
     public void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(GameObject.Find("AttackPoint").GetComponent<Transform>().position,AttackRange);
-        Gizmos.DrawWireSphere(GameObject.Find("Gun").GetComponent<Transform>().position, AttackRangeDistance);
+        Gizmos.DrawWireSphere(AttackPointL.GetComponent<Transform>().position,AttackRange);
+        Gizmos.DrawWireSphere(AttackPointR.GetComponent<Transform>().position, AttackRange);
+        Gizmos.DrawWireSphere(Gun.GetComponent<Transform>().position, AttackRangeDistance);
     }
     public void Dispara()
     {
@@ -114,11 +131,21 @@ public class Avatar : MonoBehaviour
             {
                 if (enemy != null)
                 {                    
-                    Instantiate(bala, GameObject.Find("Gun").transform.position, Quaternion.Euler(0, 0, 90));                    
+                    Instantiate(bala, GameObject.Find("Gun").transform.position, Quaternion.Euler(0, 0, 90));
+                    break;
                 }
-                
 
+                
             }
         }
     }
+    public void morir()
+    {
+        if (vida <= 0)
+        {
+            Destroy(gameObject);
+        }
+        
+    }
+    
 }
