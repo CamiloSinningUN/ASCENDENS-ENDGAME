@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4843523655551553154}
   - component: {fileID: 4843523655551553155}
   - component: {fileID: 4843523655551553152}
-  - component: {fileID: 6875671853348022495}
   m_Layer: 0
   m_Name: moneda
   m_TagString: Untagged
@@ -90,25 +89,11 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4843523655551553153}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6875671853348022495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4843523655551553153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11cb2d8a96233ed40ab59ac316a074d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cantidad: {fileID: 8609905077115590812, guid: 2ca1f09fa42b64444a922e8cda959cc3,
-    type: 3}
 --- !u!1001 &7100660339697922885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -186,7 +171,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: coin
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5763612197606829701, guid: 96e5a136f512ddf409463504644548c1, type: 3}
+    - {fileID: 5763612197606829696, guid: 96e5a136f512ddf409463504644548c1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 96e5a136f512ddf409463504644548c1, type: 3}
 --- !u!4 &3276063292297092550 stripped
 Transform:

@@ -96,7 +96,14 @@ public class Enemy : MonoBehaviour
     }
     public void morir()
     {
-        Destroy(gameObject);
+        velocidad = 0;
+        Sprite.GetComponent<Animator>().SetBool("live", false);
+        gameObject.GetComponent<Rigidbody>().useGravity = false;
+        gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+
+        gameObject.GetComponent<Enemy>().enabled = false;
+        
     }
     public void Ataque_Cuerpo()
     {                 
@@ -105,6 +112,7 @@ public class Enemy : MonoBehaviour
             {           
             if (person != null)
             {
+                
                 Sprite.GetComponent<Animator>().SetTrigger("atack");
                 person.GetComponent<Avatar>().recibir_daño(daño,gameObject.transform);
             }

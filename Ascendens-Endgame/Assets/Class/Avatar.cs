@@ -12,7 +12,6 @@ public class Avatar : MonoBehaviour
     public float AttackRangeDistance = 2f;
     public int daño=1;
     public int vida;
-
     public LayerMask enemyMask;
     public bool aux=true;
     public GameObject bala;
@@ -31,12 +30,17 @@ public class Avatar : MonoBehaviour
         {
 
             gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, fuerza, 0);
-            GameObject.Find("Person").GetComponent<Animator>().SetBool("Jumping", true);
+            Sprite.GetComponent<Animator>().SetBool("Jumping", true);
+            
         }
         else if (collision.transform.tag == "piso")
         {
-            GameObject.Find("Person").GetComponent<Animator>().SetBool("Jumping", false);
+            Sprite.GetComponent<Animator>().SetBool("Jumping", false);
             aux = true;
+        }
+        if (collision.transform.tag != "piso")
+        {
+            aux = false;
         }
     }
     private void Update()
@@ -45,7 +49,7 @@ public class Avatar : MonoBehaviour
         {
             movimiento();
         }
-        if (!GameObject.Find("Person").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("attacking"))
+        if (!Sprite.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("attacking"))
         {
             ataque_cuerpo();
         }

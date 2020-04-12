@@ -186,8 +186,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1001 &3567623056149293357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -265,7 +265,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.035056252
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4601843534228995191, guid: 5ae1afd730e354d4abf5029ada18acd4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5ae1afd730e354d4abf5029ada18acd4, type: 3}
 --- !u!4 &6271075035223267906 stripped
 Transform:
