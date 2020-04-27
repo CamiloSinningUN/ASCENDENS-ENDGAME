@@ -691,7 +691,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2964648010922501423, guid: 6d072334fd4fca842b3dab6255e9cf28,
           type: 3}
-        m_MethodName: jugar
+        m_MethodName: Jugar
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

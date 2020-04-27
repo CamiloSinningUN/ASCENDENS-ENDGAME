@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8228441440102393326}
   - component: {fileID: 2964648010922501423}
+  - component: {fileID: 6942380718385140784}
+  - component: {fileID: -7698625666600511473}
   m_Layer: 0
   m_Name: controlador
   m_TagString: Untagged
@@ -43,3 +45,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 651e17394aa333249a97c267d4fb8775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6942380718385140784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306034943269858056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113664c3f4a582b43aa36701f814e341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7698625666600511473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306034943269858056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59844652bf1a88f4cb531ca6455ec0e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  botonContinuar: {fileID: 0}
+  boton: 0
+  Ascendens: {fileID: 0}

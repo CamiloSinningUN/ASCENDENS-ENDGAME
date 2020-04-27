@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/Partidas_Guardadas.unity
     guid: 741156c6eb52e2447825007518f0320f
-  - enabled: 1
+  - enabled: 0
     path: "Assets/scenes/Inicia_Sesi\xF3n.unity"
     guid: 0250672022ecb7a4a8528b2813aa6702
   - enabled: 1

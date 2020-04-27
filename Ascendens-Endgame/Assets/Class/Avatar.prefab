@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5793384867330202502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.97, y: 5.95, z: 0}
+  m_LocalPosition: {x: -23, y: -13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5793384867426077813}
@@ -50,9 +50,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea24416718f7364680e73b173fd1723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuerza: 11
-  dinero: 0
-  velocidad: 4
+  fuerza: 9
+  Money: 0
+  velocidad: 5
   AttackRange: 0.98
   AttackRangeDistance: 5.22
   "da\xF1o": 5
@@ -309,7 +309,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5793384868224026137}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!82 &5793384868224026139
 AudioSource:
   m_ObjectHideFlags: 0
@@ -317,7 +317,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5793384868224026137}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9c7ef4ef69a16de44a19600036b901ae, type: 3}

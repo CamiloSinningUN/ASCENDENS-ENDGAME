@@ -1,17 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Avatar : MonoBehaviour
 {
     
     public float fuerza;
-    public int dinero;
-    public float velocidad = 2f;
+    public int Money;
+    public float velocidad;
     public float AttackRange = 0.5f;
     public float AttackRangeDistance = 2f;
-    public int daño=1;
-    public int vida;
+    public int daño;
+    public int vida;   
+
     public LayerMask enemyMask;
     public bool aux=true;
     public GameObject bala;
@@ -19,10 +19,10 @@ public class Avatar : MonoBehaviour
     public GameObject AttackPointR;
     public GameObject Gun;
     public GameObject Sprite;
-
-    
-
-    
+    private void awake()
+    {
+        CargarJugador();
+    }
     private void OnCollisionStay(Collision collision)
     {
 
@@ -43,6 +43,12 @@ public class Avatar : MonoBehaviour
             aux = false;
         }
     }
+    public void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(AttackPointL.GetComponent<Transform>().position, AttackRange);
+        Gizmos.DrawWireSphere(AttackPointR.GetComponent<Transform>().position, AttackRange);
+        Gizmos.DrawWireSphere(Gun.GetComponent<Transform>().position, AttackRangeDistance);
+    }
     private void Update()
     {
         if (aux)
@@ -58,6 +64,16 @@ public class Avatar : MonoBehaviour
         Dispara();
         
     }
+    //
+    public Avatar(Avatar player)
+    {
+        fuerza = player.fuerza;
+        Money = player.Money;
+        velocidad = player.velocidad;
+        daño = player.daño;
+        vida = player.vida;
+    }
+    //
     public void movimiento()
     {
         if (Input.GetKey(KeyCode.D))
@@ -119,13 +135,7 @@ public class Avatar : MonoBehaviour
             GameObject.Find("Person").GetComponent<Animator>().SetTrigger("hit");
             aux = false;
         }
-    }
-    public void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(AttackPointL.GetComponent<Transform>().position,AttackRange);
-        Gizmos.DrawWireSphere(AttackPointR.GetComponent<Transform>().position, AttackRange);
-        Gizmos.DrawWireSphere(Gun.GetComponent<Transform>().position, AttackRangeDistance);
-    }
+    }    
     public void Dispara()
     {
         if (Input.GetKeyDown(KeyCode.Q))
@@ -151,5 +161,29 @@ public class Avatar : MonoBehaviour
         }
         
     }
-    
+    public void recibirDinero(int money)
+    {
+      
+        Money = Money + money;
+    }  
+    //
+    public void guardarJugador()
+    {
+        SaveSystem.SavePlayer(this);
+    }
+    public void CargarJugador()
+    {
+        AvatarData data = SaveSystem.LoadPlayer();
+        if (data != null)
+        {
+            fuerza = data.fuerza;
+            Money = data.Money;
+            velocidad = data.velocidad;
+            daño = data.daño;
+            vida = data.vida;
+        }
+        
+
+    }
+   //
 }
