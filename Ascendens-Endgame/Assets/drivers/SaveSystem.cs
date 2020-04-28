@@ -6,10 +6,25 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem 
 {
-   public static void SavePlayer(Avatar player )
+    public static void SavePlayer(Avatar player)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/player.fun";
+        string path="";
+        switch (PlayerPrefs.GetInt("Boton"))
+        {
+            case 0:
+                path = Application.persistentDataPath + "/player0.fun";
+                break;
+            case 1:
+                path = Application.persistentDataPath + "/player1.fun";
+                break;
+            case 2:
+                path = Application.persistentDataPath + "/player2.fun";
+                break;
+            default:
+                Debug.Log("No se encontro boton");
+                break;
+        }    
         FileStream stream = new FileStream(path, FileMode.Create);
         AvatarData data = new AvatarData(player);
         formatter.Serialize(stream, data);
@@ -17,7 +32,23 @@ public static class SaveSystem
     }
     public static AvatarData LoadPlayer()
     {
-        string path = Application.persistentDataPath + "/player.fun";
+        string path ="";
+        Debug.Log("el boton es: " + PlayerPrefs.GetInt("Boton"));
+        switch (PlayerPrefs.GetInt("Boton"))
+        {
+            case 0:
+                path = Application.persistentDataPath + "/player0.fun";
+                break;
+            case 1:
+                path = Application.persistentDataPath + "/player1.fun";
+                break;
+            case 2:
+                path = Application.persistentDataPath + "/player2.fun";
+                break;
+            default:
+                Debug.Log("No se encontro boton");
+                break;
+        }
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -32,4 +63,29 @@ public static class SaveSystem
             return null;
         }
     }
+    public static void RemovePlayer()
+    {
+        string path = "";
+        
+        switch (PlayerPrefs.GetInt("Boton"))
+        {
+            case 0:
+                path = Application.persistentDataPath + "/player0.fun";
+                break;
+            case 1:
+                path = Application.persistentDataPath + "/player1.fun";
+                break;
+            case 2:
+                path = Application.persistentDataPath + "/player2.fun";
+                break;
+            default:
+                Debug.Log("No se encontro boton");
+                break;
+        }
+        if (File.Exists(path))
+        {
+            File.Delete(path);            
+        }
+       
+    } 
 }

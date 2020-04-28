@@ -55,8 +55,9 @@ MonoBehaviour:
   velocidad: 5
   AttackRange: 0.98
   AttackRangeDistance: 5.22
-  "da\xF1o": 5
-  vida: 1
+  "da\xF1o": 1
+  vida: 3
+  nivel: Nivel1.0
   enemyMask:
     serializedVersion: 2
     m_Bits: 256
@@ -77,8 +78,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9733945, y: 1.8807163, z: 1}
-  m_Center: {x: -0.75825804, y: -0.44035816, z: 0}
+  m_Size: {x: 1.0938816, y: 1.9543095, z: 1}
+  m_Center: {x: -0.77842236, y: -0.4035616, z: 0}
 --- !u!54 &5793384867330202497
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -122,7 +123,7 @@ Transform:
   m_GameObject: {fileID: 5793384867426077800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.8270034, y: -1.4891653, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.066, z: 1}
   m_Children: []
   m_Father: {fileID: 5793384867330202498}
   m_RootOrder: 0
@@ -286,7 +287,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.966175
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

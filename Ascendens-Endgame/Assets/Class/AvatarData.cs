@@ -9,6 +9,7 @@ public class AvatarData
     public float velocidad;    
     public int daño;
     public int vida;
+    public string nivel;
 
     public AvatarData(Avatar avatar)
     {
@@ -17,5 +18,6 @@ public class AvatarData
         velocidad = avatar.velocidad;
         daño = avatar.daño;
         vida = avatar.vida;
+        nivel = avatar.nivel;
     }
 }

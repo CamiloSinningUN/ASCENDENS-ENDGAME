@@ -9,7 +9,7 @@ public class Inicio : MonoBehaviour
     void Start()
     {
         Instantiate(Person, gameObject.transform, true);
-        
+        Person.GetComponent<Avatar>().CargarJugador();
 
 
     }

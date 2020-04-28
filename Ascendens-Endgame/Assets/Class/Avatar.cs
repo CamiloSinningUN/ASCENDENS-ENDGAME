@@ -10,7 +10,8 @@ public class Avatar : MonoBehaviour
     public float AttackRange = 0.5f;
     public float AttackRangeDistance = 2f;
     public int daño;
-    public int vida;   
+    public int vida;
+    public string nivel="Nivel1.0";
 
     public LayerMask enemyMask;
     public bool aux=true;
@@ -19,13 +20,21 @@ public class Avatar : MonoBehaviour
     public GameObject AttackPointR;
     public GameObject Gun;
     public GameObject Sprite;
-    private void awake()
+    //las plataformas hacen que escales, arreglar eso
+    private void Start()
     {
+        
         CargarJugador();
     }
+    
     private void OnCollisionStay(Collision collision)
     {
-
+        
+        if (collision.transform.tag != "piso" && gameObject.GetComponent<Rigidbody>().velocity.y !=0)
+        {
+            aux = false;
+        }
+       
         if (Input.GetKey(KeyCode.W) && collision.transform.tag == "piso")
         {
 
@@ -38,10 +47,7 @@ public class Avatar : MonoBehaviour
             Sprite.GetComponent<Animator>().SetBool("Jumping", false);
             aux = true;
         }
-        if (collision.transform.tag != "piso")
-        {
-            aux = false;
-        }
+        
     }
     public void OnDrawGizmosSelected()
     {
@@ -59,21 +65,12 @@ public class Avatar : MonoBehaviour
         {
             ataque_cuerpo();
         }
-
+        
         morir();
         Dispara();
         
     }
-    //
-    public Avatar(Avatar player)
-    {
-        fuerza = player.fuerza;
-        Money = player.Money;
-        velocidad = player.velocidad;
-        daño = player.daño;
-        vida = player.vida;
-    }
-    //
+    
     public void movimiento()
     {
         if (Input.GetKey(KeyCode.D))
@@ -166,7 +163,7 @@ public class Avatar : MonoBehaviour
       
         Money = Money + money;
     }  
-    //
+    
     public void guardarJugador()
     {
         SaveSystem.SavePlayer(this);
@@ -176,14 +173,22 @@ public class Avatar : MonoBehaviour
         AvatarData data = SaveSystem.LoadPlayer();
         if (data != null)
         {
+           
             fuerza = data.fuerza;
+            
             Money = data.Money;
+            
             velocidad = data.velocidad;
             daño = data.daño;
             vida = data.vida;
+            nivel = data.nivel;
+        }
+        else
+        {
+            Debug.Log("Soy nulo");
         }
         
 
     }
-   //
+   
 }
