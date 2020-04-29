@@ -47,7 +47,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.8516873, y: 2.472283, z: 1}
-  m_Center: {x: -0.96403223, y: -1.221586, z: 0}
+  m_Center: {x: -0.96403223, y: -1.16, z: 0}
 --- !u!114 &8480558602747491396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
   propulcion: 0
   "da\xF1o": 0
   vida: 10
-  AttackRange: 0.5
+  AttackRange: 0.6
   PersonLayer:
     serializedVersion: 2
     m_Bits: 512

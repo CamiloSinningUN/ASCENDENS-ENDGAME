@@ -10,7 +10,8 @@ public class Avatar : MonoBehaviour
     public float AttackRange = 0.5f;
     public float AttackRangeDistance = 2f;
     public int daño;
-    public int vida;
+    public int vida=3;
+    public int vidaActual;
     public string nivel="Nivel1.0";
 
     public LayerMask enemyMask;
@@ -20,11 +21,16 @@ public class Avatar : MonoBehaviour
     public GameObject AttackPointR;
     public GameObject Gun;
     public GameObject Sprite;
+    public BarraVida barravida;
     //las plataformas hacen que escales, arreglar eso
     private void Start()
     {
-        
+        barravida = GameObject.Find("BarraVida").GetComponent<BarraVida>();
+       
         CargarJugador();
+        
+        vidaActual = vida;
+        barravida.setmax(vida);
     }
     
     private void OnCollisionStay(Collision collision)
@@ -69,8 +75,7 @@ public class Avatar : MonoBehaviour
         morir();
         Dispara();
         
-    }
-    
+    }   
     public void movimiento()
     {
         if (Input.GetKey(KeyCode.D))
@@ -118,7 +123,8 @@ public class Avatar : MonoBehaviour
     }
     public void recibir_daño(int daño,Transform posicion_daño)
     {
-        vida = vida - daño;
+        vidaActual = vidaActual - daño;
+        barravida.setHealth(vidaActual);
         if (posicion_daño.position.x > gameObject.transform.position.x)
         {
             gameObject.GetComponent<Rigidbody>().velocity = new Vector3(-6, 4, 0);
@@ -152,7 +158,7 @@ public class Avatar : MonoBehaviour
     }
     public void morir()
     {
-        if (vida <= 0)
+        if (vidaActual <= 0)
         {
             Destroy(gameObject);
         }
@@ -163,7 +169,7 @@ public class Avatar : MonoBehaviour
       
         Money = Money + money;
     }  
-    
+   
     public void guardarJugador()
     {
         SaveSystem.SavePlayer(this);

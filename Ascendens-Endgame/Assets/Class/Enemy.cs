@@ -41,7 +41,16 @@ public class Enemy : MonoBehaviour
         {
             mover();
         }
-        Ataque_Cuerpo();
+        if (!Sprite.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("attacking"))
+        {
+            
+            Ataque_Cuerpo();
+        }
+        else
+        {
+            Debug.Log("no entre");
+        }
+        
     }
     private void OnTriggerExit(Collider other)
     {

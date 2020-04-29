@@ -51,12 +51,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fuerza: 9
-  Money: 0
+  Money: 2
   velocidad: 5
   AttackRange: 0.98
   AttackRangeDistance: 5.22
   "da\xF1o": 1
-  vida: 3
+  vida: 10
+  vidaActual: 3
   nivel: Nivel1.0
   enemyMask:
     serializedVersion: 2
@@ -67,6 +68,7 @@ MonoBehaviour:
   AttackPointR: {fileID: 5793384867849931943}
   Gun: {fileID: 5793384869050246896}
   Sprite: {fileID: 5793384867426077800}
+  barravida: {fileID: 0}
 --- !u!65 &5793384867330202496
 BoxCollider:
   m_ObjectHideFlags: 0
