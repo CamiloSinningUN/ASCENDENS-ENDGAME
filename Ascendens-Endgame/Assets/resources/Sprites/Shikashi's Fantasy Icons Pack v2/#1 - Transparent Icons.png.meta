@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 42820af2772f24bda991ed7de294c2fd
+guid: 2d582c544c7b2734cbf898fb886c1b86
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7168540986364394743
-    second: sign_0
+      213: 1660957820977104790
+    second: '#1 - Transparent Icons_0'
+  - first:
+      213: -5063555655813669412
+    second: '#1 - Transparent Icons_1'
+  - first:
+      213: 4292991442675503664
+    second: '#1 - Transparent Icons_2'
+  - first:
+      213: 5559745257100799005
+    second: '#1 - Transparent Icons_3'
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -34,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -48,8 +57,8 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
-  spriteBorder: {x: 0, y: 9, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -63,10 +72,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -75,39 +84,90 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 512
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sign_0
+      name: '#1 - Transparent Icons_0'
       rect:
         serializedVersion: 2
-        x: 0
-        y: 9
-        width: 18
-        height: 11
+        x: 3
+        y: 518
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6974f3a8658ec0710800000000000000
+      internalID: 1660957820977104790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '#1 - Transparent Icons_1'
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 550
+        width: 24
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdd5eca75f2aab9b0800000000000000
+      internalID: -5063555655813669412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '#1 - Transparent Icons_2'
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 550
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 032177cc8f4c39b30800000000000000
+      internalID: 4292991442675503664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '#1 - Transparent Icons_3'
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 454
+        width: 24
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +175,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fcf31aeb06cb7360800000000000000
-      internalID: 7168540986364394743
+      spriteID: d1ce723cade282d40800000000000000
+      internalID: 5559745257100799005
       vertices: []
       indices: 
       edges: []

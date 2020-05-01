@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 42820af2772f24bda991ed7de294c2fd
+guid: 72a6977d7d2a44349b3d8632d6660c4d
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -104,12 +104,12 @@ TextureImporter:
       name: sign_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 9
-        width: 18
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2
+        y: 16
+        width: 2
+        height: 2
+      alignment: 9
+      pivot: {x: 0.47093022, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
