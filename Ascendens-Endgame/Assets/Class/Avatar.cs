@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using UnityEngine;
+using UnityEngine.UI;
 public class Avatar : MonoBehaviour
 {
     
@@ -12,25 +14,37 @@ public class Avatar : MonoBehaviour
     public int daño;
     public int vida=3;
     public int vidaActual;
+    public int mana=3;
+    public int manaActual;
     public string nivel="Nivel1.0";
 
     public LayerMask enemyMask;
     public bool aux=true;
+    public bool Backpackisopen = false;
     public GameObject bala;
     public GameObject AttackPointL;
     public GameObject AttackPointR;
     public GameObject Gun;
     public GameObject Sprite;
     public BarraVida barravida;
+    public BarraMana barramana;
+    public GameObject mochila;
+    public Text ContadorDinero;
     //las plataformas hacen que escales, arreglar eso
     private void Start()
     {
         barravida = GameObject.Find("BarraVida").GetComponent<BarraVida>();
-       
+        barramana = GameObject.Find("BarraMana").GetComponent<BarraMana>();
+        mochila = GameObject.Find("Tienda");
+        mochila.SetActive(false);
+        ContadorDinero = GameObject.Find("Contador").GetComponent<Text>();
+        ContadorDinero.text = Money + "";
         CargarJugador();
         
         vidaActual = vida;
         barravida.setmax(vida);
+        manaActual = mana;
+        barramana.setmaxmana(mana);
     }
     
     private void OnCollisionStay(Collision collision)
@@ -74,6 +88,7 @@ public class Avatar : MonoBehaviour
         
         morir();
         Dispara();
+        Mochila();
         
     }   
     public void movimiento()
@@ -141,7 +156,7 @@ public class Avatar : MonoBehaviour
     }    
     public void Dispara()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && manaActual > 0)
         {
             Collider[] hitEnemies = Physics.OverlapSphere(GameObject.Find("Gun").transform.position, AttackRangeDistance, enemyMask);
             foreach (Collider enemy in hitEnemies)
@@ -149,6 +164,8 @@ public class Avatar : MonoBehaviour
                 if (enemy != null)
                 {                    
                     Instantiate(bala, GameObject.Find("Gun").transform.position, Quaternion.Euler(0, 0, 90));
+                    manaActual = manaActual - 1;
+                    barramana.setmana(manaActual);
                     break;
                 }
 
@@ -168,8 +185,8 @@ public class Avatar : MonoBehaviour
     {
       
         Money = Money + money;
-    }  
-   
+        ContadorDinero.text = Money + "";
+    }     
     public void guardarJugador()
     {
         SaveSystem.SavePlayer(this);
@@ -196,5 +213,25 @@ public class Avatar : MonoBehaviour
         
 
     }
-   
+    public void Mochila()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("entre en mochila");
+            if (Backpackisopen)
+            {
+                
+                mochila.SetActive(false);
+                Backpackisopen = false;
+                Debug.Log("entre en if");
+            }
+            else
+            {
+                mochila.SetActive(true);
+                Backpackisopen = true;
+                Debug.Log("entre en else");
+            }
+        }
+    }
+    
 }

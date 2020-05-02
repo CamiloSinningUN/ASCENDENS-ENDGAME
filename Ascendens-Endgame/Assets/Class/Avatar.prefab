@@ -56,19 +56,24 @@ MonoBehaviour:
   AttackRange: 0.98
   AttackRangeDistance: 5.22
   "da\xF1o": 1
-  vida: 10
+  vida: 3
   vidaActual: 3
+  mana: 3
+  manaActual: 0
   nivel: Nivel1.0
   enemyMask:
     serializedVersion: 2
     m_Bits: 256
   aux: 1
+  Backpackisopen: 0
   bala: {fileID: 8405020137621223167, guid: bb225ed1a9562d84db28c2dc501c4960, type: 3}
   AttackPointL: {fileID: 5793384868675387231}
   AttackPointR: {fileID: 5793384867849931943}
   Gun: {fileID: 5793384869050246896}
   Sprite: {fileID: 5793384867426077800}
   barravida: {fileID: 0}
+  barramana: {fileID: 0}
+  mochila: {fileID: 0}
 --- !u!65 &5793384867330202496
 BoxCollider:
   m_ObjectHideFlags: 0
