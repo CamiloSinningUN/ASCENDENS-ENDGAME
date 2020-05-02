@@ -41,15 +41,13 @@ public class Enemy : MonoBehaviour
         {
             mover();
         }
-        if (!Sprite.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("attacking"))
+        if (!Sprite.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("attack") && !Sprite.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("hurt"))
         {
             
             Ataque_Cuerpo();
         }
-        else
-        {
-            Debug.Log("no entre");
-        }
+        
+        
         
     }
     private void OnTriggerExit(Collider other)
@@ -121,9 +119,14 @@ public class Enemy : MonoBehaviour
             {           
             if (person != null)
             {
+                if (person.tag == "Player")
+                {
+                    Sprite.GetComponent<Animator>().SetTrigger("atack");
+                    person.GetComponent<Avatar>().recibir_daño(daño, gameObject.transform);                    
+                    break;
+                }
                 
-                Sprite.GetComponent<Animator>().SetTrigger("atack");
-                person.GetComponent<Avatar>().recibir_daño(daño,gameObject.transform);
+               
             }
             
             }      

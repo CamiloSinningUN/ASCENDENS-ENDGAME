@@ -217,19 +217,19 @@ public class Avatar : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("entre en mochila");
+            
             if (Backpackisopen)
             {
                 
                 mochila.SetActive(false);
                 Backpackisopen = false;
-                Debug.Log("entre en if");
+                
             }
             else
             {
                 mochila.SetActive(true);
                 Backpackisopen = true;
-                Debug.Log("entre en else");
+                
             }
         }
     }

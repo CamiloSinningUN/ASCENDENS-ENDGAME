@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fuerza: 9
-  Money: 2
+  Money: 0
   velocidad: 5
   AttackRange: 0.98
   AttackRangeDistance: 5.22
@@ -74,6 +74,7 @@ MonoBehaviour:
   barravida: {fileID: 0}
   barramana: {fileID: 0}
   mochila: {fileID: 0}
+  ContadorDinero: {fileID: 0}
 --- !u!65 &5793384867330202496
 BoxCollider:
   m_ObjectHideFlags: 0

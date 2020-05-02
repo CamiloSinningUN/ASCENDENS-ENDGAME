@@ -33,7 +33,7 @@ public static class SaveSystem
     public static AvatarData LoadPlayer()
     {
         string path ="";
-        Debug.Log("el boton es: " + PlayerPrefs.GetInt("Boton"));
+        
         switch (PlayerPrefs.GetInt("Boton"))
         {
             case 0:
