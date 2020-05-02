@@ -233,5 +233,39 @@ public class Avatar : MonoBehaviour
             }
         }
     }
-    
+    public void ComprarVidamax(int newVidamax,int costo)
+    {
+        vida = vida + newVidamax;
+        barravida.setmax(vida);
+        barravida.setHealth(vidaActual);
+        Money = Money - costo;
+        ContadorDinero.text = Money + "";
+    }
+    public void ComprarManamax(int newManamax,int costo)
+    {
+        mana = mana + newManamax;
+        barramana.setmaxmana(mana);
+        Money = Money - costo;
+        ContadorDinero.text = Money + "";
+    }
+    public void ComprarDaño(int newDaño, int costo)
+    {
+        daño = daño + newDaño;
+        Money = Money - costo;
+        ContadorDinero.text = Money + "";
+    }
+    public void ComprarRegeneraciónVida( int costo)
+    {
+        vidaActual = vida;
+        barravida.setHealth(vidaActual);
+        Money = Money - costo;
+        ContadorDinero.text = Money + "";
+    }
+    public void ComprarRegeneraciónMana( int costo)
+    {
+        manaActual = mana;
+        barramana.setmana(manaActual);
+        Money = Money - costo;
+        ContadorDinero.text = Money + "";
+    }
 }

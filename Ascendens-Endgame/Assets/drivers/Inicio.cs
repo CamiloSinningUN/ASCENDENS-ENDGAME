@@ -6,7 +6,7 @@ public class Inicio : MonoBehaviour
 {
     public GameObject Person;
     
-    void Start()
+    void Awake()
     {
         Instantiate(Person, gameObject.transform, true);
         Person.GetComponent<Avatar>().CargarJugador();
