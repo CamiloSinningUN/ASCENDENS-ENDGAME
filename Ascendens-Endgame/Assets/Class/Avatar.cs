@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class Avatar : MonoBehaviour
 {
     
@@ -46,7 +47,7 @@ public class Avatar : MonoBehaviour
         manaActual = mana;
         barramana.setmaxmana(mana);
     }
-    
+   
     private void OnCollisionStay(Collision collision)
     {
         
@@ -66,6 +67,11 @@ public class Avatar : MonoBehaviour
         {
             Sprite.GetComponent<Animator>().SetBool("Jumping", false);
             aux = true;
+        }
+        if (collision.transform.tag == "Caer")
+        {
+            vidaActual = 0;
+            morir();
         }
         
     }
@@ -177,7 +183,7 @@ public class Avatar : MonoBehaviour
     {
         if (vidaActual <= 0)
         {
-            Destroy(gameObject);
+            SceneManager.LoadScene(nivel);
         }
         
     }
