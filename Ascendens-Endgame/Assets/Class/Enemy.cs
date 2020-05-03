@@ -18,8 +18,10 @@ public class Enemy : MonoBehaviour
     public int daño;
     public int vida=3;
     public float AttackRange = 0.5f;
+    public float FollowRange = 2f;
     public LayerMask PersonLayer;
     public GameObject AttackPoint;
+    public GameObject FollowPoint;
     public GameObject Sprite;
 
     public bool aux=false;
@@ -46,6 +48,7 @@ public class Enemy : MonoBehaviour
             
             Ataque_Cuerpo();
         }
+        seguir();
         
         
         
@@ -58,12 +61,7 @@ public class Enemy : MonoBehaviour
         }
     }
     private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "bala")
-        {
-            Sprite.GetComponent<Animator>().SetTrigger("hit");
-            vida--;
-        }
+    {      
         
         if (other.gameObject.tag == "esquina")
         {
@@ -71,16 +69,7 @@ public class Enemy : MonoBehaviour
             propulcion = float.Parse(other.gameObject.name);
             Sprite.GetComponent<Animator>().SetTrigger("jumping");
         }
-        //que parezca que le pega cuando se acerca
-        if (other.gameObject.tag == "Player")
-        {
-            Sprite.GetComponent<Animator>().SetTrigger("atack");
-        }
-        if (!other.isTrigger)
-        {
-            velocidad = -velocidad;
-            Sprite.GetComponent<SpriteRenderer>().flipX=true;
-        }
+        
     }
     public void salto()
     {
@@ -113,27 +102,68 @@ public class Enemy : MonoBehaviour
         
     }
     public void Ataque_Cuerpo()
-    {                 
-            Collider[] hitpersons = Physics.OverlapSphere(AttackPoint.transform.position, AttackRange, PersonLayer);
-            foreach (Collider person in hitpersons)
-            {           
+    {
+        Collider[] hitpersons = Physics.OverlapSphere(AttackPoint.transform.position, AttackRange, PersonLayer);
+        foreach (Collider person in hitpersons)
+        {
             if (person != null)
             {
                 if (person.tag == "Player")
                 {
                     Sprite.GetComponent<Animator>().SetTrigger("atack");
-                    person.GetComponent<Avatar>().recibir_daño(daño, gameObject.transform);                    
+                    person.GetComponent<Avatar>().recibir_daño(daño, gameObject.transform);
                     break;
                 }
-                
-               
+
+
             }
-            
-            }      
+
+        }
     }
+    public void seguir()
+    {
+        Collider[] hitpersons = Physics.OverlapSphere(FollowPoint.transform.position, FollowRange, PersonLayer);
+        foreach (Collider person in hitpersons)
+        {
+            
+            if (person != null)
+            {
+                if (person.tag == "Player")
+                {
+                    if (person.transform.position.x > gameObject.transform.position.x)
+                    {
+                        if (Sprite.GetComponent<SpriteRenderer>().flipX == true)
+                        {
+                            Sprite.GetComponent<SpriteRenderer>().flipX = false;
+                            Sprite.transform.Translate(new Vector3(2, 0, 0));
+                            velocidad = -velocidad;
+                        }
+
+                    }
+                    else if(person.transform.position.x< gameObject.transform.position.x)
+                    {
+                        if(Sprite.GetComponent<SpriteRenderer>().flipX == false)
+                        {
+                            Sprite.GetComponent<SpriteRenderer>().flipX = true;
+                            Sprite.transform.Translate(new Vector3(-2, 0, 0));
+                            velocidad = -velocidad;
+
+                        }
+                        
+                    }
+                }
+
+
+            }
+
+        }
+    }
+
+
     public void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(AttackPoint.transform.position, AttackRange);
+        Gizmos.DrawWireSphere(FollowPoint.transform.position, FollowRange);
     }
 
 }
