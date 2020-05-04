@@ -4,6 +4,9 @@ using System.ComponentModel.Design;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEditor;
+using UnityEngine.Rendering;
+
 public class Avatar : MonoBehaviour
 {
     
@@ -17,8 +20,10 @@ public class Avatar : MonoBehaviour
     public int vidaActual;
     public int mana=3;
     public int manaActual;
+    
     public string nivel="Nivel1.0";
 
+    public bool GroundCheck;
     public LayerMask enemyMask;
     public bool aux=true;
     public bool Backpackisopen = false;
@@ -31,9 +36,33 @@ public class Avatar : MonoBehaviour
     public BarraMana barramana;
     public GameObject mochila;
     public Text ContadorDinero;
-    //las plataformas hacen que escales, arreglar eso
+  
     private void Start()
     {
+         nivel = SceneManager.GetActiveScene().name;
+        Debug.Log(nivel);
+          if(nivel == "Nivel1.0")
+          {
+              Sprite = GameObject.Find("Person");
+              GameObject.Find("Eva").SetActive(false);
+              GameObject.Find("Heavy").SetActive(false);
+          }else if(nivel == "Nivel2.0")
+          {
+              Sprite = GameObject.Find("Heavy");
+              GameObject.Find("Eva").SetActive(false);
+              GameObject.Find("Person").SetActive(false);
+          }else if(nivel == "Nivel3.0")
+          {
+              Sprite = GameObject.Find("Eva");
+              GameObject.Find("Heavy").SetActive(false);
+              GameObject.Find("Person").SetActive(false);
+            Sprite.GetComponent<SpriteRenderer>().flipX = false;
+
+        }
+
+        
+       
+
         barravida = GameObject.Find("BarraVida").GetComponent<BarraVida>();
         barramana = GameObject.Find("BarraMana").GetComponent<BarraMana>();
         mochila = GameObject.Find("Tienda");
@@ -47,33 +76,41 @@ public class Avatar : MonoBehaviour
         manaActual = mana;
         barramana.setmaxmana(mana);
     }
-   
+    
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.transform.tag == "piso")
+        {
+            GroundCheck = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.transform.tag == "piso")
+        {
+            GroundCheck = false;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag=="piso")
+        Sprite.GetComponent<Animator>().SetBool("Jumping", false);
+    }
     private void OnCollisionStay(Collision collision)
     {
-        
-        if (collision.transform.tag != "piso" && gameObject.GetComponent<Rigidbody>().velocity.y !=0)
+        if (collision.transform.tag == "piso" && GroundCheck == false)
+        {
+           
+            aux = false;
+        }else if (collision.transform.tag!="piso" && GroundCheck ==false)
         {
             aux = false;
         }
-       
-        if (Input.GetKey(KeyCode.W) && collision.transform.tag == "piso")
+        
+        if (collision.transform.tag == "piso" && GroundCheck == true)
         {
-
-            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, fuerza, 0);
-            Sprite.GetComponent<Animator>().SetBool("Jumping", true);
-            
-        }
-        else if (collision.transform.tag == "piso")
-        {
-            Sprite.GetComponent<Animator>().SetBool("Jumping", false);
             aux = true;
         }
-        if (collision.transform.tag == "Caer")
-        {
-            vidaActual = 0;
-            morir();
-        }
-        
     }
     public void OnDrawGizmosSelected()
     {
@@ -92,6 +129,7 @@ public class Avatar : MonoBehaviour
             ataque_cuerpo();
         }
         
+        saltar();        
         morir();
         Dispara();
         Mochila();
@@ -102,22 +140,39 @@ public class Avatar : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             gameObject.GetComponent<Rigidbody>().velocity = new Vector3(velocidad, gameObject.GetComponent<Rigidbody>().velocity.y, 0);
-            GameObject.Find("Person").GetComponent<Animator>().SetBool("Moving", true);
-            GameObject.Find("Person").GetComponent<SpriteRenderer>().flipX = true;
+            Sprite.GetComponent<Animator>().SetBool("Moving", true);
+            Sprite.GetComponent<SpriteRenderer>().flipX = true;
+            if (nivel == "Nivel3.0")
+            {
+                Sprite.GetComponent<SpriteRenderer>().flipX = false;
+            }
             
             
         }
         if (Input.GetKey(KeyCode.A))
         {
             gameObject.GetComponent<Rigidbody>().velocity = new Vector3(-velocidad, gameObject.GetComponent<Rigidbody>().velocity.y, 0);
-            GameObject.Find("Person").GetComponent<Animator>().SetBool("Moving", true);
-            GameObject.Find("Person").GetComponent<Animator>().GetComponent<SpriteRenderer>().flipX = false;
-            
+            Sprite.GetComponent<Animator>().SetBool("Moving", true);
+            Sprite.GetComponent<Animator>().GetComponent<SpriteRenderer>().flipX = false;
+            if (nivel == "Nivel3.0")
+            {
+                Sprite.GetComponent<SpriteRenderer>().flipX = true;
+            }
+
         }
         if (!Input.GetKey("a") && !Input.GetKey("d"))
         {
-            GameObject.Find("Person").GetComponent<Animator>().SetBool("Moving", false);
+           Sprite.GetComponent<Animator>().SetBool("Moving", false);
         }
+    }
+    public void saltar()
+    {
+        if(Input.GetKeyDown(KeyCode.W) && GroundCheck)
+        {
+            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, fuerza, 0);
+            Sprite.GetComponent<Animator>().SetBool("Jumping", true);
+        }
+       
     }
     public void ataque_cuerpo()
     {
@@ -149,14 +204,14 @@ public class Avatar : MonoBehaviour
         if (posicion_daño.position.x > gameObject.transform.position.x)
         {
             gameObject.GetComponent<Rigidbody>().velocity = new Vector3(-6, 4, 0);
-            GameObject.Find("Person").GetComponent<Animator>().SetTrigger("hit");
+            Sprite.GetComponent<Animator>().SetTrigger("hit");
             aux = false;
 
         }
         if(posicion_daño.position.x < gameObject.transform.position.x)
         {
             gameObject.GetComponent<Rigidbody>().velocity = new Vector3(6, 4, 0);
-            GameObject.Find("Person").GetComponent<Animator>().SetTrigger("hit");
+            Sprite.GetComponent<Animator>().SetTrigger("hit");
             aux = false;
         }
     }    
@@ -183,6 +238,7 @@ public class Avatar : MonoBehaviour
     {
         if (vidaActual <= 0)
         {
+            
             SceneManager.LoadScene(nivel);
         }
         

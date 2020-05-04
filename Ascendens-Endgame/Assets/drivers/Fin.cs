@@ -8,7 +8,7 @@ public class Fin : MonoBehaviour
     public string siguiente;
     //guardar progreso   
     //pasar a siguiente escena
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
         {
