@@ -108,6 +108,10 @@ public class Avatar : MonoBehaviour
         {
             aux = true;
         }
+        if (collision.transform.tag == "Caer")
+        {
+            vidaActual = 0;
+        }
     }
     public void OnDrawGizmosSelected()
     {
