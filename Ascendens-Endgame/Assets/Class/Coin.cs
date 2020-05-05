@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class Coin : Object
 {
-    private void OnTriggerEnter(Collider other)
+    public bool aux = true;
+    private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && aux)
         {
             other.GetComponent<Avatar>().recibirDinero(1);
+            aux = false;
             Destroy(gameObject);
+            
         }
-        Debug.Log("Entre moneda");
+        
     }
 }
