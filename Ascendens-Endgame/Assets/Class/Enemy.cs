@@ -39,10 +39,7 @@ public class Enemy : MonoBehaviour
         {
             salto();
         }
-        else
-        {
-            mover();
-        }
+        
         if (!Sprite.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("attack") && !Sprite.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("hurt"))
         {
             
@@ -110,6 +107,7 @@ public class Enemy : MonoBehaviour
             {
                 if (person.tag == "Player")
                 {
+                    
                     Sprite.GetComponent<Animator>().SetTrigger("atack");
                     person.GetComponent<Avatar>().recibir_daño(daño, gameObject.transform);
                     break;
@@ -117,12 +115,14 @@ public class Enemy : MonoBehaviour
 
 
             }
+            
 
         }
     }
     public void seguir()
     {
         Collider[] hitpersons = Physics.OverlapSphere(FollowPoint.transform.position, FollowRange, PersonLayer);
+       
         foreach (Collider person in hitpersons)
         {
             
@@ -130,6 +130,8 @@ public class Enemy : MonoBehaviour
             {
                 if (person.tag == "Player")
                 {
+                    Sprite.GetComponent<Animator>().SetBool("moving", true);
+                    gameObject.GetComponent<Rigidbody>().velocity = new Vector3(velocidad, gameObject.GetComponent<Rigidbody>().velocity.y + propulcion, 0);
                     if (person.transform.position.x > gameObject.transform.position.x)
                     {
                         if (Sprite.GetComponent<SpriteRenderer>().flipX == true)
@@ -155,8 +157,10 @@ public class Enemy : MonoBehaviour
 
 
             }
+           
 
         }
+        
     }
 
 

@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fuerza: 9.5
-  Money: 8
+  Money: 0
   velocidad: 7
   AttackRange: 0.98
   AttackRangeDistance: 5.22

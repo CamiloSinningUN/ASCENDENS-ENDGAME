@@ -59,17 +59,14 @@ public class Avatar : MonoBehaviour
             Sprite.GetComponent<SpriteRenderer>().flipX = false;
 
         }
-
-        
-       
-
+        CargarJugador();
         barravida = GameObject.Find("BarraVida").GetComponent<BarraVida>();
         barramana = GameObject.Find("BarraMana").GetComponent<BarraMana>();
         mochila = GameObject.Find("Tienda");
         mochila.SetActive(false);
         ContadorDinero = GameObject.Find("Contador").GetComponent<Text>();
         ContadorDinero.text = Money + "";
-        CargarJugador();
+        
         
         vidaActual = vida;
         barravida.setmax(vida);
@@ -110,6 +107,10 @@ public class Avatar : MonoBehaviour
         if (collision.transform.tag == "piso" && GroundCheck == true)
         {
             aux = true;
+        }
+        if (collision.transform.tag == "Caer")
+        {
+            vidaActual = 0;
         }
     }
     public void OnDrawGizmosSelected()
@@ -245,7 +246,7 @@ public class Avatar : MonoBehaviour
     }
     public void recibirDinero(int money)
     {
-      
+        Debug.Log("recibi dinero");
         Money = Money + money;
         ContadorDinero.text = Money + "";
     }     

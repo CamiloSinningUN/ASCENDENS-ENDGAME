@@ -13,6 +13,7 @@ public class Fin : MonoBehaviour
         if (other.tag == "Player")
         {
             other.GetComponent<Avatar>().guardarJugador();
+            
             SceneManager.LoadScene(siguiente);
 
         }
