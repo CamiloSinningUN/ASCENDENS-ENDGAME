@@ -356,6 +356,7 @@ public class Avatar : MonoBehaviour
     {
         mana = mana + newManamax;
         barramana.setmaxmana(mana);
+        barramana.setmana(manaActual);
         Money = Money - costo;
         ContadorDinero.text = Money + "";
     }
