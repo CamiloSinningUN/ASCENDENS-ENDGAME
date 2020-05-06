@@ -40,7 +40,7 @@ public class Avatar : MonoBehaviour
     private void Start()
     {
          nivel = SceneManager.GetActiveScene().name;
-        Debug.Log(nivel);
+   
           if(nivel == "Nivel1.0")
           {
               Sprite = GameObject.Find("Person");
@@ -81,10 +81,18 @@ public class Avatar : MonoBehaviour
         {
             GroundCheck = true;
         }
+        if (other.transform.tag == "Enemy")
+        {
+            GroundCheck = true;
+        }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.transform.tag == "piso")
+        {
+            GroundCheck = false;
+        }
+        if (other.transform.tag == "Enemy")
         {
             GroundCheck = false;
         }
@@ -112,6 +120,23 @@ public class Avatar : MonoBehaviour
         if (collision.transform.tag == "Caer")
         {
             vidaActual = 0;
+        }
+        
+        if (GroundCheck == false && collision.transform.tag == "Enemy")
+        {
+            aux = false;
+        }
+        if(GroundCheck && collision.transform.tag == "Enemy")
+        {
+            aux = true;
+        }
+
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.transform.tag == "piso" && GroundCheck == false)
+        {
+            aux = true;
         }
     }
     public void OnDrawGizmosSelected()
@@ -179,22 +204,43 @@ public class Avatar : MonoBehaviour
     public void ataque_cuerpo()
     {
         if (Input.GetKeyDown(KeyCode.F))
-        {            
-            Sprite.GetComponent<Animator>().SetTrigger("atacking");           
-            Collider[] hitEnemiesL = Physics.OverlapSphere(AttackPointL.transform.position,AttackRange,enemyMask);
+        {
+            Sprite.GetComponent<Animator>().SetTrigger("atacking");
+            Collider[] hitEnemiesL = Physics.OverlapSphere(AttackPointL.transform.position, AttackRange, enemyMask);
             Collider[] hitEnemiesR = Physics.OverlapSphere(AttackPointR.transform.position, AttackRange, enemyMask);
             foreach (Collider enemy in hitEnemiesL)
             {
-                if (Sprite.GetComponent<SpriteRenderer>().flipX == false)
+                if (nivel != "Nivel3.0")
                 {
-                    enemy.GetComponent<Enemy>().recibirdaño(daño);
-                }                                             
+                    if (Sprite.GetComponent<SpriteRenderer>().flipX == false)
+                    {
+                        enemy.GetComponent<Enemy>().recibirdaño(daño);
+                    }
+                }
+                else
+                {
+                    if (Sprite.GetComponent<SpriteRenderer>().flipX == true)
+                    {
+                        enemy.GetComponent<Enemy>().recibirdaño(daño);
+                    }
+                }
+
             }
             foreach (Collider enemy in hitEnemiesR)
             {
-                if (Sprite.GetComponent<SpriteRenderer>().flipX == true)
+                if (nivel != "Nivel3.0")
                 {
-                    enemy.GetComponent<Enemy>().recibirdaño(daño);
+                    if (Sprite.GetComponent<SpriteRenderer>().flipX == true)
+                    {
+                        enemy.GetComponent<Enemy>().recibirdaño(daño);
+                    }
+                }
+                else
+                {
+                    if (Sprite.GetComponent<SpriteRenderer>().flipX == false)
+                    {
+                        enemy.GetComponent<Enemy>().recibirdaño(daño);
+                    }
                 }
             }
         }

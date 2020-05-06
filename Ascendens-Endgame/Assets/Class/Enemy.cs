@@ -79,6 +79,8 @@ public class Enemy : MonoBehaviour
     }
     public void recibirdaño(int daño)
     {
+        Debug.Log("recibi daño: " + daño);
+           
         vida = vida-daño;
         Sprite.GetComponent<Animator>().SetTrigger("hit");
         if (vida <= 0)

@@ -159,7 +159,7 @@ MonoBehaviour:
   velocidad: 7
   AttackRange: 0.98
   AttackRangeDistance: 5.22
-  "da\xF1o": 1
+  "da\xF1o": 2
   vida: 3
   vidaActual: 3
   mana: 3
