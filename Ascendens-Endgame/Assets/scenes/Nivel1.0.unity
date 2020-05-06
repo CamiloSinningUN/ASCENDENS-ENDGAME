@@ -849,6 +849,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4111268198064663640, guid: bd7f5510c9f03ac428fe48a663373cf5,
+        type: 3}
+      propertyPath: vida
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7203495507919554435, guid: bd7f5510c9f03ac428fe48a663373cf5,
         type: 3}
       propertyPath: m_Name
@@ -4787,6 +4792,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4111268198064663640, guid: bd7f5510c9f03ac428fe48a663373cf5,
+        type: 3}
+      propertyPath: vida
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7203495507919554435, guid: bd7f5510c9f03ac428fe48a663373cf5,
         type: 3}
       propertyPath: m_Name
@@ -5762,6 +5772,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4111268198064663640, guid: bd7f5510c9f03ac428fe48a663373cf5,
+        type: 3}
+      propertyPath: vida
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7203495507919554435, guid: bd7f5510c9f03ac428fe48a663373cf5,
         type: 3}
       propertyPath: m_Name
@@ -6324,6 +6339,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4111268198064663640, guid: bd7f5510c9f03ac428fe48a663373cf5,
+        type: 3}
+      propertyPath: vida
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7203495507919554435, guid: bd7f5510c9f03ac428fe48a663373cf5,
         type: 3}
       propertyPath: m_Name
@@ -6462,6 +6482,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4111268198064663640, guid: bd7f5510c9f03ac428fe48a663373cf5,
+        type: 3}
+      propertyPath: vida
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7203495507919554435, guid: bd7f5510c9f03ac428fe48a663373cf5,
         type: 3}
       propertyPath: m_Name
@@ -6599,6 +6624,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111268198064663640, guid: bd7f5510c9f03ac428fe48a663373cf5,
+        type: 3}
+      propertyPath: vida
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7203495507919554435, guid: bd7f5510c9f03ac428fe48a663373cf5,
         type: 3}
@@ -8373,6 +8403,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111268198064663640, guid: bd7f5510c9f03ac428fe48a663373cf5,
+        type: 3}
+      propertyPath: vida
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7203495507919554435, guid: bd7f5510c9f03ac428fe48a663373cf5,
         type: 3}
@@ -10374,6 +10409,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4111268198064663640, guid: bd7f5510c9f03ac428fe48a663373cf5,
+        type: 3}
+      propertyPath: vida
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7203495507919554435, guid: bd7f5510c9f03ac428fe48a663373cf5,
         type: 3}
       propertyPath: m_Name
@@ -11395,6 +11435,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111268198064663640, guid: bd7f5510c9f03ac428fe48a663373cf5,
+        type: 3}
+      propertyPath: vida
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7203495507919554435, guid: bd7f5510c9f03ac428fe48a663373cf5,
         type: 3}
@@ -13629,6 +13674,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mochila_Tienda
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047673035922781007, guid: 33571b3c440f0f64885c1e483dbe9f0c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -21.7
       objectReference: {fileID: 0}
     - target: {fileID: 9063030639137459538, guid: 33571b3c440f0f64885c1e483dbe9f0c,
         type: 3}
