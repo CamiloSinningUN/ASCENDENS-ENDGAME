@@ -56,6 +56,7 @@ public class Avatar : MonoBehaviour
               Sprite = GameObject.Find("Eva");
               GameObject.Find("Heavy").SetActive(false);
               GameObject.Find("Person").SetActive(false);
+            Debug.Log("Me voltie");
             Sprite.GetComponent<SpriteRenderer>().flipX = false;
 
         }
@@ -169,7 +170,7 @@ public class Avatar : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().velocity = new Vector3(velocidad, gameObject.GetComponent<Rigidbody>().velocity.y, 0);
             Sprite.GetComponent<Animator>().SetBool("Moving", true);
             Sprite.GetComponent<SpriteRenderer>().flipX = true;
-            if (nivel == "Nivel3.0")
+            if ( Sprite.name=="Eva")
             {
                 Sprite.GetComponent<SpriteRenderer>().flipX = false;
             }
@@ -181,7 +182,7 @@ public class Avatar : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().velocity = new Vector3(-velocidad, gameObject.GetComponent<Rigidbody>().velocity.y, 0);
             Sprite.GetComponent<Animator>().SetBool("Moving", true);
             Sprite.GetComponent<Animator>().GetComponent<SpriteRenderer>().flipX = false;
-            if (nivel == "Nivel3.0")
+            if (Sprite.name=="Eva")
             {
                 Sprite.GetComponent<SpriteRenderer>().flipX = true;
             }
@@ -210,7 +211,7 @@ public class Avatar : MonoBehaviour
             Collider[] hitEnemiesR = Physics.OverlapSphere(AttackPointR.transform.position, AttackRange, enemyMask);
             foreach (Collider enemy in hitEnemiesL)
             {
-                if (nivel != "Nivel3.0")
+                if (Sprite.name != "Eva")
                 {
                     if (Sprite.GetComponent<SpriteRenderer>().flipX == false)
                     {
@@ -228,7 +229,7 @@ public class Avatar : MonoBehaviour
             }
             foreach (Collider enemy in hitEnemiesR)
             {
-                if (nivel != "Nivel3.0")
+                if (Sprite.name != "Eva")
                 {
                     if (Sprite.GetComponent<SpriteRenderer>().flipX == true)
                     {
