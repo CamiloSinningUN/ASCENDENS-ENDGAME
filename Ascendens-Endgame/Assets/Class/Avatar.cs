@@ -59,6 +59,7 @@ public class Avatar : MonoBehaviour
             Sprite.GetComponent<SpriteRenderer>().flipX = false;
 
         }
+          
         CargarJugador();
         barravida = GameObject.Find("BarraVida").GetComponent<BarraVida>();
         barramana = GameObject.Find("BarraMana").GetComponent<BarraMana>();

@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponent<Rigidbody>().velocity=new Vector3(5,5,0);        
+        gameObject.GetComponent<Rigidbody>().velocity=new Vector3(5,5,0);
         
     }
     // Update is called once per frame
@@ -137,7 +137,11 @@ public class Enemy : MonoBehaviour
                         if (Sprite.GetComponent<SpriteRenderer>().flipX == true)
                         {
                             Sprite.GetComponent<SpriteRenderer>().flipX = false;
-                            Sprite.transform.Translate(new Vector3(2, 0, 0));
+                            if (Sprite.name != "Boss")
+                            {
+                                Sprite.transform.Translate(new Vector3(2, 0, 0));
+                            }
+                            
                             velocidad = -velocidad;
                         }
 
@@ -147,7 +151,11 @@ public class Enemy : MonoBehaviour
                         if(Sprite.GetComponent<SpriteRenderer>().flipX == false)
                         {
                             Sprite.GetComponent<SpriteRenderer>().flipX = true;
-                            Sprite.transform.Translate(new Vector3(-2, 0, 0));
+                            if (Sprite.name != "Boss")
+                            {
+                                Sprite.transform.Translate(new Vector3(-2, 0, 0));
+                            }
+                                
                             velocidad = -velocidad;
 
                         }
