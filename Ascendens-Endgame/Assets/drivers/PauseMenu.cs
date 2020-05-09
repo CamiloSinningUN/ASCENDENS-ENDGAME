@@ -7,6 +7,8 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject PauseMenuUI;
+    public GameObject Intrucciones;
+
     // Update is called once per frame
     private void Start()
     {
@@ -29,6 +31,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         PauseMenuUI.SetActive(false);
+        Intrucciones.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
@@ -40,7 +43,11 @@ public class PauseMenu : MonoBehaviour
     }
     public void Instrucciones()
     {
-        Debug.Log("aqui podremos todas las instrucciones");
+        Intrucciones.SetActive(true);
+    }
+    public void cerrarInstrucciones()
+    {
+        Intrucciones.SetActive(false);
     }
     public void Salir()
     {
