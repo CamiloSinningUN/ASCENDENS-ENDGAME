@@ -15,4 +15,8 @@ public class Button_Manager : MonoBehaviour
     {
         Application.Quit();
     }
+    public void abrirlink(string link)
+    {
+        Application.OpenURL(link);
+    }
 }
