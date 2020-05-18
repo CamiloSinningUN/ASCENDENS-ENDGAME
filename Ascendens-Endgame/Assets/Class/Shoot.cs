@@ -2,11 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+///<summary>
+///Da funciones y atributos a la bala disparada por el personaje.
+///Próximamente disparada también por enemigos
+///</summary>
+
 public class Shoot : MonoBehaviour
 {
     public float AttackRangeDistance = 2f;
     public LayerMask enemyMask;
     public int velocidad;
+
+    ///<summary>
+    ///Se llama al iniciar.
+    ///</summary>
+
     private void Start()
     {
         
@@ -26,10 +36,26 @@ public class Shoot : MonoBehaviour
            
         }
     }
+
+    ///<summary>
+    ///Le da un dirección a la bala.
+    ///</summary>
+    ///<param name="x">
+    /// Es la velocidad que adquiere la bala en la dirección x.
+    ///</param>
+    ///<param name="y">
+    ///Es la velocidad que adquiere la bala en la dirección y.
+    ///</param>
+
     public void trayectoria(float x,float y)
     {
         gameObject.GetComponent<Rigidbody>().velocity = new Vector3(x, y, 0);        
     }
+
+    ///<summary>
+    ///Es llamado cuando un collider comienza a tocar el trigger del objeto.
+    ///</summary>
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag != "Player")

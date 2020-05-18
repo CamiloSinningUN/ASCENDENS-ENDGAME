@@ -2,16 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+///<summary>
+///Le da estilo a la historia del juego.
+///</summary>
+
 public class StarWars : MonoBehaviour
 {
     public float velocidad = 80;
-    // Start is called before the first frame update
+
+    ///<summary>
+    ///Es llamada al iniciar.
+    ///</summary>
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+   
+    ///<summary>
+    ///Es llamado en cada frame.
+    ///</summary>
+
     void Update()
     {
         Vector3 posicion = transform.position;

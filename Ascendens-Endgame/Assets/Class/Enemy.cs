@@ -25,14 +25,21 @@ public class Enemy : MonoBehaviour
     public GameObject Sprite;
 
     public bool aux=false;
+
+    ///<summary>
+    ///Se llama al iniciar.
+    ///</summary>
     
-    // Start is called before the first frame update
     void Start()
     {
         gameObject.GetComponent<Rigidbody>().velocity=new Vector3(5,5,0);
         
     }
-    // Update is called once per frame
+
+    ///<summary>
+    ///Se llama cada frame.
+    ///</summary>
+
     void Update()
     {
         if (aux)
@@ -50,6 +57,14 @@ public class Enemy : MonoBehaviour
         
         
     }
+
+    ///<summary>
+    ///Este es llamado cuando el collider deja de tocar el trigger del objeto.
+    ///</summary>
+    ///<param name="other">
+    ///Es el collider que detecta el trigger.
+    ///</param>
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "esquina")
@@ -57,6 +72,14 @@ public class Enemy : MonoBehaviour
             aux = true;
         }
     }
+
+    ///<summary>
+    ///Es llamado cuando un collider comienza a tocar el trigger del objeto.
+    ///</summary>
+    ///<param name="other">
+    ///Es el collider que detecta el trigger.
+    ///</param>
+
     private void OnTriggerEnter(Collider other)
     {      
         
@@ -68,15 +91,33 @@ public class Enemy : MonoBehaviour
         }
         
     }
+
+    ///<summary>
+    ///Permite el salto del personaje.
+    ///</summary>
+
     public void salto()
     {
         gameObject.GetComponent<Rigidbody>().velocity = new Vector3(velocidad, gameObject.GetComponent<Rigidbody>().velocity.y, 0);
     }
+
+    ///<summary>
+    ///Hace posible el movimiento del personaje.
+    ///</summary>
+
     public void mover()
     {
         Sprite.GetComponent<Animator>().SetBool("moving", true);
         gameObject.GetComponent<Rigidbody>().velocity = new Vector3(velocidad, gameObject.GetComponent<Rigidbody>().velocity.y + propulcion, 0);
     }
+
+    ///<summary>
+    ///Permite que el enemigo pierda vida luego del ataque.
+    ///</summary>
+    ///<param name="daño">
+    ///Daño que recibirá el enemigo.
+    ///</param>
+
     public void recibirdaño(int daño)
     {
         Debug.Log("recibi daño: " + daño);
@@ -89,6 +130,11 @@ public class Enemy : MonoBehaviour
            
         }
     }
+
+    ///<summary>
+    ///Cuando la vida del enemigo es 0, permite que este muera.
+    ///</summary>
+
     public void morir()
     {
         velocidad = 0;
@@ -100,6 +146,11 @@ public class Enemy : MonoBehaviour
         gameObject.GetComponent<Enemy>().enabled = false;
         
     }
+
+    ///<summary>
+    ///Permite realizar un ataque cuerpo a cuerpo.
+    ///</summary>
+
     public void Ataque_Cuerpo()
     {
         Collider[] hitpersons = Physics.OverlapSphere(AttackPoint.transform.position, AttackRange, PersonLayer);
@@ -121,6 +172,11 @@ public class Enemy : MonoBehaviour
 
         }
     }
+
+    ///<summary>
+    ///Permite que el enemigo siga al personaje cuando se encuentra en su campo de visión.
+    ///</summary>
+
     public void seguir()
     {
         Collider[] hitpersons = Physics.OverlapSphere(FollowPoint.transform.position, FollowRange, PersonLayer);
@@ -173,6 +229,9 @@ public class Enemy : MonoBehaviour
         
     }
 
+    ///<summary>
+    ///Dibuja una esfera útil para el desarrollo.
+    ///</summary>
 
     public void OnDrawGizmosSelected()
     {

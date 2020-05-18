@@ -7,6 +7,13 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 using UnityEngine.Rendering;
 
+///<summary>
+///Clase principal del personaje.
+///</summary>
+///<remarks>
+///Controla todas las acciones y atributos actuales del personaje.
+///</remarks>
+
 public class Avatar : MonoBehaviour
 {
     
@@ -36,7 +43,11 @@ public class Avatar : MonoBehaviour
     public BarraMana barramana;
     public GameObject mochila;
     public Text ContadorDinero;
-  
+
+    ///<summary>
+    ///Se llama al iniciar.
+    ///</summary>
+
     private void Start()
     {
          nivel = SceneManager.GetActiveScene().name;
@@ -60,7 +71,7 @@ public class Avatar : MonoBehaviour
             Sprite.GetComponent<SpriteRenderer>().flipX = false;
 
         }
-          
+
         CargarJugador();
         barravida = GameObject.Find("BarraVida").GetComponent<BarraVida>();
         barramana = GameObject.Find("BarraMana").GetComponent<BarraMana>();
@@ -75,7 +86,14 @@ public class Avatar : MonoBehaviour
         manaActual = mana;
         barramana.setmaxmana(mana);
     }
-    
+
+    ///<summary>
+    ///En cada actualizacion de fisicas este es llamado para cualquier collider que este tocando el trigger.
+    ///</summary>
+    ///<param name="other">
+    ///Es el collider que detecta el trigger.
+    ///</param>
+
     private void OnTriggerStay(Collider other)
     {
         if (other.transform.tag == "piso")
@@ -87,6 +105,14 @@ public class Avatar : MonoBehaviour
             GroundCheck = true;
         }
     }
+
+    ///<summary>
+    ///Este es llamado cuando el collider deja de tocar el trigger del objeto.
+    ///</summary>
+    ///<param name="other">
+    ///Es el collider que detecta el trigger.
+    ///</param>
+
     private void OnTriggerExit(Collider other)
     {
         if (other.transform.tag == "piso")
@@ -98,11 +124,27 @@ public class Avatar : MonoBehaviour
             GroundCheck = false;
         }
     }
+
+    ///<summary>
+    ///Es llamado cuando un collider comienza a tocar el trigger del objeto.
+    ///</summary>
+    ///<param name="other">
+    ///Es el collider que detecta el trigger.
+    ///</param>
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag=="piso")
         Sprite.GetComponent<Animator>().SetBool("Jumping", false);
     }
+
+    ///<summary>
+    ///Este es llamado en cada frame para cualquier collider/rigidbody que este tocando el collider/rigidbody del objeto.
+    ///</summary>
+    ///<param name="collision">
+    ///Es el collider que detecta el collider del objeto.
+    ///</param>
+
     private void OnCollisionStay(Collision collision)
     {
         if (collision.transform.tag == "piso" && GroundCheck == false)
@@ -133,6 +175,14 @@ public class Avatar : MonoBehaviour
         }
 
     }
+
+    ///<summary>
+    ///Este es llamado cuadno el collider/rigidbody deja de tocar otro collider/rigidbody.
+    ///</summary>
+    ///<param name="collision">
+    ///Es el collider que detecta el collider del objeto.
+    ///</param>
+
     private void OnCollisionExit(Collision collision)
     {
         if (collision.transform.tag == "piso" && GroundCheck == false)
@@ -140,12 +190,22 @@ public class Avatar : MonoBehaviour
             aux = true;
         }
     }
+
+    ///<summary>
+    ///Dibuja una esfera útil para el desarrollo.
+    ///</summary>
+
     public void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(AttackPointL.GetComponent<Transform>().position, AttackRange);
         Gizmos.DrawWireSphere(AttackPointR.GetComponent<Transform>().position, AttackRange);
         Gizmos.DrawWireSphere(Gun.GetComponent<Transform>().position, AttackRangeDistance);
     }
+
+    ///<summary>
+    ///Se llama cada frame.
+    ///</summary>
+
     private void Update()
     {
         if (aux)
@@ -162,7 +222,12 @@ public class Avatar : MonoBehaviour
         Dispara();
         Mochila();
         
-    }   
+    }
+
+    ///<summary>
+    ///Hace posible el movimiento del personaje.
+    ///</summary>
+
     public void movimiento()
     {
         if (Input.GetKey(KeyCode.D))
@@ -193,6 +258,11 @@ public class Avatar : MonoBehaviour
            Sprite.GetComponent<Animator>().SetBool("Moving", false);
         }
     }
+
+    ///<summary>
+    ///Permite el salto del personaje.
+    ///</summary>
+
     public void saltar()
     {
         if(Input.GetKeyDown(KeyCode.W) && GroundCheck)
@@ -202,6 +272,11 @@ public class Avatar : MonoBehaviour
         }
        
     }
+
+    ///<summary>
+    ///Permite realizar un ataque cuerpo a cuerpo.
+    ///</summary>
+
     public void ataque_cuerpo()
     {
         if (Input.GetKeyDown(KeyCode.F))
@@ -246,6 +321,17 @@ public class Avatar : MonoBehaviour
             }
         }
     }
+
+    ///<summary>
+    ///Permite que el personaje pierda vida luego del ataque.
+    ///</summary>
+    ///<param name="daño">
+    ///Daño que recibirá el personaje.
+    ///</param>
+    ///<param name="posicion_daño">
+    ///Posición del enemigo al ejecutar el golpe.
+    ///</param>
+
     public void recibir_daño(int daño,Transform posicion_daño)
     {
         vidaActual = vidaActual - daño;
@@ -263,7 +349,12 @@ public class Avatar : MonoBehaviour
             Sprite.GetComponent<Animator>().SetTrigger("hit");
             aux = false;
         }
-    }    
+    }
+
+    ///<summary>
+    ///Realiza un ataque a distancia contra los enemigos.
+    ///</summary>
+
     public void Dispara()
     {
         if (Input.GetKeyDown(KeyCode.Q) && manaActual > 0)
@@ -283,6 +374,11 @@ public class Avatar : MonoBehaviour
             }
         }
     }
+
+    ///<summary>
+    ///Cuando la vida del personaje es 0, permite que este muera.
+    ///</summary>
+
     public void morir()
     {
         if (vidaActual <= 0)
@@ -292,16 +388,34 @@ public class Avatar : MonoBehaviour
         }
         
     }
+
+    ///<summary>
+    ///Aumenta el dinero del personaje al entrar en contacto con una moneda.
+    ///</summary>
+    ///<param name="money">
+    ///dinero que recibe al obtener una moneda.
+    ///</param>
+
     public void recibirDinero(int money)
     {
         Debug.Log("recibi dinero");
         Money = Money + money;
         ContadorDinero.text = Money + "";
-    }     
+    }
+
+    ///<summary>
+    ///Permite la perpetuación de tu información.
+    ///</summary>
+
     public void guardarJugador()
     {
         SaveSystem.SavePlayer(this);
     }
+
+    ///<summary>
+    ///Dibuja una esfera útil para el desarrollo.
+    ///</summary>
+
     public void CargarJugador()
     {
         AvatarData data = SaveSystem.LoadPlayer();
@@ -324,6 +438,11 @@ public class Avatar : MonoBehaviour
         
 
     }
+
+    ///<summary>
+    ///Abre la tienda de pociones.
+    ///</summary>
+
     public void Mochila()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -344,6 +463,17 @@ public class Avatar : MonoBehaviour
             }
         }
     }
+
+    ///<summary>
+    ///Eleva la vida del jugador a su máximo valor.
+    ///</summary>
+    ///<param name="newVidamax">
+    ///Vida que será agregada.
+    ///</param>
+    ///<param name="costo">
+    ///Costo de la poción.
+    ///</param>
+
     public void ComprarVidamax(int newVidamax,int costo)
     {
         vida = vida + newVidamax;
@@ -352,6 +482,17 @@ public class Avatar : MonoBehaviour
         Money = Money - costo;
         ContadorDinero.text = Money + "";
     }
+
+    ///<summary>
+    ///Eleva el maná del jugador a su máximo valor.
+    ///</summary>
+    ///<param name="newManamax">
+    ///Maná que será agregado.
+    ///</param>
+    ///<param name="costo">
+    ///Costo de la poción.
+    ///</param>
+
     public void ComprarManamax(int newManamax,int costo)
     {
         mana = mana + newManamax;
@@ -360,12 +501,31 @@ public class Avatar : MonoBehaviour
         Money = Money - costo;
         ContadorDinero.text = Money + "";
     }
+
+    ///<summary>
+    ///Eleva el daño que causa el jugador.
+    ///</summary>
+    ///<param name="newDaño">
+    ///Valor del daño que será agregado al daño actual.
+    ///</param>
+    ///<param name="costo">
+    ///Costo de la poción.
+    ///</param>
+
     public void ComprarDaño(int newDaño, int costo)
     {
         daño = daño + newDaño;
         Money = Money - costo;
         ContadorDinero.text = Money + "";
     }
+
+    ///<summary>
+    ///Aumenta la vida del personaje a la capacidad máxima actual.
+    ///</summary>
+    ///<param name="costo">
+    ///Costo de la poción.
+    ///</param>
+
     public void ComprarRegeneraciónVida( int costo)
     {
         vidaActual = vida;
@@ -373,6 +533,14 @@ public class Avatar : MonoBehaviour
         Money = Money - costo;
         ContadorDinero.text = Money + "";
     }
+
+    ///<summary>
+    ///Aumenta el maná del personaje a la capacidad máxima actual.
+    ///</summary>
+    ///<param name="costo">
+    ///Costo de la poción.
+    ///</param>
+
     public void ComprarRegeneraciónMana( int costo)
     {
         manaActual = mana;

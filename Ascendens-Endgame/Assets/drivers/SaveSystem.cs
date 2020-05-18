@@ -3,9 +3,23 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
+///<summary>
+///Sistema de guardado.
+///Guarda.
+///Carga.
+///Borra los personajes.
+///</summary>
 
 public static class SaveSystem 
 {
+
+    ///<summary>
+    ///Guarda el personaje.
+    ///</summary>
+    ///<param name="player">
+    ///Es un personaje.
+    ///</param>
+
     public static void SavePlayer(Avatar player)
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -30,6 +44,14 @@ public static class SaveSystem
         formatter.Serialize(stream, data);
         stream.Close();
     }
+
+    ///<summary>
+    ///Carga el jugador seleccionada.
+    ///</summary>
+    ///<return>
+    ///Devuelve un objeto de la clase avatardata.
+    ///</return>
+
     public static AvatarData LoadPlayer()
     {
         string path ="";
@@ -63,6 +85,11 @@ public static class SaveSystem
             return null;
         }
     }
+
+    ///<summary>
+    ///Borra el jugador.
+    ///</summary>
+
     public static void RemovePlayer()
     {
         string path = "";

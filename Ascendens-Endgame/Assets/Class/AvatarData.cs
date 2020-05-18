@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
+
+///<summary>
+///Hecha para funciones de guardado.
+///</summary>
+
 public class AvatarData 
 {
     public float fuerza;
@@ -10,6 +15,13 @@ public class AvatarData
     public int daño;
     public int vida;
     public string nivel;
+
+    ///<summary>
+    ///Es el constructor.
+    ///</summary>
+    ///<param name="avatar">
+    ///Es un personaje.
+    ///</param>
 
     public AvatarData(Avatar avatar)
     {
