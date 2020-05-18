@@ -31,6 +31,7 @@ public class Button_Manager : MonoBehaviour
         Application.Quit();
     }
 
+
     ///<summary>
     ///Lleva a la página de desarrollo del juego.
     ///</summary>
@@ -38,4 +39,10 @@ public class Button_Manager : MonoBehaviour
     ///Es el url de la página.
     ///</param>
   
+
+    public void abrirlink(string link)
+    {
+        Application.OpenURL(link);
+    }
+
 }
