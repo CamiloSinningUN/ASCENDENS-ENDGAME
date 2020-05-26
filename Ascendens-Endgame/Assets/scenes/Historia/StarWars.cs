@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 ///<summary>
 ///Le da estilo a la historia del juego.
@@ -16,7 +17,7 @@ public class StarWars : MonoBehaviour
 
     void Start()
     {
-        
+        Time.timeScale = 1f; 
     }
 
    
