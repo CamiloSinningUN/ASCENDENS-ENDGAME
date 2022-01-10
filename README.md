@@ -31,7 +31,7 @@ En Unity Hub abrir el poryecto y ejecutarlo de forma regular.
 * **Breynner Hurtado** - *Gerente* -
 * **Juan Julio** - *Programador* -
 
-Mirar la lista de todos los [contribuyentes](https://github.com/CamiloSinningUN/Covid-19-simulator/contributors) quíenes han participado en este proyecto. 
+Mirar la lista de todos los [contribuyentes](https://github.com/CamiloSinningUN/ASCENDENS-ENDGAME/contributors) quíenes han participado en este proyecto. 
 
 ## Proceso de desarrollo
 Se uso el metodo waterfall para llevar a cabo la organización de las estapas de proyecto y con ello se hizo un cronograma con los tiempos limites para cada etapa. Para conocer mas de como se llevo a cabo la organización del proyecto dirigirse a:
