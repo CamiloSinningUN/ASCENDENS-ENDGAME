@@ -1,45 +1,38 @@
 # ASCENDENS-ENDGAME
-Un videojuego de tipo plataformas 2D con características de RPGs (role playing game) clásicos y estilo gráfico píxel art. Se encuentra desarrollado en el motor grafico unity usando el lenguage de programacion c#.
+A 2D platform video game with classic RPG (role playing game) characteristics and a pixel art graphic style. It is developed in the unity graphic engine using the c# programming language.
 
-## Comenzando 🚀
+## preview
 
-Puede obtener una copia del proyecto simplemente descargandolo desde este repositorio.
+![ezgif-1-b92b94d0f7](https://user-images.githubusercontent.com/61607058/173711752-55eba6b5-1ca0-4033-a3a6-3fa4e39671f3.gif)
 
-Mira **Despliegue** para conocer como desplegar el proyecto.
+## Starting 🚀
 
-### Pre-requisitos 📋
+You can get a copy of the project simply by downloading it from this repository.
 
-El proyecto fue desarrollado en Unity en el lenguaje de programación c#.
+See **Deployment** to learn how to deploy the project.
 
-* Para obtener Unity visitar: https://unity3d.com/es/get-unity/download
+### Pre-requisites 📋
 
-### Instalación 🔧
+The project was developed in Unity in the c# programming language.
 
-Para la correcta instalación de los recursos necesarios seguir los pasos indicados en: https://unity3d.com/es/get-unity/download
+* To get Unity visit: https://unity3d.com/es/get-unity/download
 
-## Despliegue 📦
+### Installation 🔧
 
-En Unity Hub abrir el poryecto y ejecutarlo de forma regular.
+For the correct installation of the necessary resources, follow the steps indicated in: https://unity3d.com/es/get-unity/download
 
-## Construido con 🛠️
+## Deployment 📦
+
+In Unity Hub open the project and run it regularly.
+
+## Built with 🛠️
 
 * Unity - Game engine
 
-## Autores ✒️
+## Authors ✒️
 
-* **Camilo Sinning** - *Diseño* - [CamiloSinningUN](https://github.com/CamiloSinningUN)
-* **Breynner Hurtado** - *Gerente* -
-* **Juan Julio** - *Programador* -
+* **Camilo Sinning** - *Design* - [CamiloSinningUN](https://github.com/CamiloSinningUN)
+* **Breynner Hurtado** - *Manager* - [breynner1](https://github.com/breynner1)
+* **Juan Julio** - *Programmer* - [djulioj](https://github.com/djulioj)
 
-Mirar la lista de todos los [contribuyentes](https://github.com/CamiloSinningUN/ASCENDENS-ENDGAME/contributors) quíenes han participado en este proyecto. 
-
-## Proceso de desarrollo
-Se uso el metodo waterfall para llevar a cabo la organización de las estapas de proyecto y con ello se hizo un cronograma con los tiempos limites para cada etapa. Para conocer mas de como se llevo a cabo la organización del proyecto dirigirse a:
-https://spark.adobe.com/page/7XVRL2ZiyNF3i/
-
-### Diseño
-Para llevar a cambo el diseño del código se usaron patrones de diseño como itherator, singleton, prototype, obeserver, etc. En cuento a el diseño de las interfaces y objetos del juegos se usaron recursos disponibles de forma gratis a través del internet. Para conocer mas de como se llevo a cabo el diseño del proyecto dirigirse a:
-https://spark.adobe.com/page/zFtEldk0rIu4K/
-
-El manual de usuario y demas información se encuentra disponible en:
-https://spark.adobe.com/page/0LmSC4nsGKGRN/
+See the list of all [contributors](https://github.com/CamiloSinningUN/ASCENDENS-ENDGAME/contributors) who have participated in this project.
